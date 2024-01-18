@@ -68,8 +68,9 @@ body::after {
 
 #skills-list li {
     cursor: pointer;
+    width: fit-content;
     font-size: 10px;
-    margin-bottom: 5px;
+    margin: 3px;
     background-color: var(--background-color);
     box-shadow: var(--content-square-box-shadow-small);
 }
