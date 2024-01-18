@@ -3,7 +3,7 @@
     --square-margin: 18px;
     --movable-square-size: 36px;
     --content-box-margin: 50px;
-    --num-cols: 3;
+    --num-cols: 2;
     --square-total-size: calc(var(--square-size) + 2 * var(--square-margin));
     --content-box-padding: var(--movable-square-size);
     --ten-pixel-traversal-duration: 74ms;  /* AKA animation speed */
@@ -63,7 +63,7 @@ body::after {
     transform: translate(0, -100%);
     padding: 10px;
     list-style: none; /* Removes default list styling */
-    z-index: 500; /* Practically the top */
+    z-index: 5; /* Basically the bottom of the stack */
 }
 
 #skills-list li {
