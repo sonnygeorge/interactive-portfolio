@@ -1,0 +1,264 @@
+:root {
+    --square-size: 178px;
+    --square-margin: 18px;
+    --movable-square-size: 36px;
+    --content-box-margin: 50px;
+    --num-cols: 3;
+    --square-total-size: calc(var(--square-size) + 2 * var(--square-margin));
+    --content-box-padding: var(--movable-square-size);
+    --ten-pixel-traversal-duration: 74ms;  /* AKA animation speed */
+    --speech-bubble-color: rgb(123, 123, 123);
+    --sprite-color: rgb(129, 125, 125);
+    --background-color: rgb(255, 251, 234);
+    --darker-background-color: rgb(233, 229, 212);
+    --default-content-square-color: rgb(217, 224, 202);
+    --speech-side-padding: 20px;
+    --content-square-box-shadow: 0px 0px 15px 6px var(--background-color);
+    --content-square-box-shadow_small: 0px 0px 10px 6px var(--background-color);
+    --square-border-radius: 1rem;
+    --blue-highlight-color: rgb(167, 223, 226);
+    --red-highlight-color: rgb(199, 33, 0);
+    --glow-blink-color: rgba(255, 244, 35, 0.268);
+    --dark-grey-color: rgba(77, 77, 77, 0.869);
+    --grey-color: rgb(135, 132, 124);
+    --light-grey-color: rgb(160, 157, 150);
+    --lightest-grey-color: rgba(187, 182, 168, 0.727);
+}
+
+.hidden {
+    display: none;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    color: var(--grey-color);
+    justify-content: center;
+    font-family: monospace;
+    align-items: center;
+    background-color: var(--background-color);
+    position: relative;
+}
+
+body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('assets/grass.svg'); /* Replace with your SVG file's path */
+    background-repeat: repeat;
+    background-size: 240px 240px; /* Adjust the size as needed */
+    opacity: 0.5; /* Adjust the opacity as needed */
+}
+
+#skills-list {
+    position: fixed;
+    top: 100%;
+    left: 0;
+    transform: translate(0, -100%);
+    padding: 10px;
+    list-style: none; /* Removes default list styling */
+    z-index: 500; /* Practically the top */
+}
+
+#skills-list li {
+    cursor: pointer;
+    font-size: 10px;
+    margin-bottom: 5px;
+    background-color: var(--background-color);
+    box-shadow: var(--content-square-box-shadow-small);
+}
+
+#skills-list li:hover {
+    color: var(--dark-grey-color); /* Change color on hover */
+    font-size: 11px;  
+}
+
+.blinking-glow-effect {
+    animation: blink-box-shadow 1.0s infinite;
+}
+
+@keyframes blink-box-shadow {
+    0%, 100% { 
+        box-shadow: 0 0 0px 3px var(--glow-blink-color); /* Glow effect */
+    }
+    50% { 
+        box-shadow: 0 0 2px 10px var(--glow-blink-color); /* Glow effect */
+    }
+}
+
+#centering-container {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#content-box {
+    position: relative;
+    display: grid;
+    padding: var(--content-box-padding); /* Outside "lanes" */
+    margin: var(--content-box-margin);
+    grid-template-columns: repeat(var(--num-cols), var(--square-total-size));
+    grid-gap: var(--movable-square-size); /* In-between "lanes" */
+    justify-content: start;
+    align-items: start;
+    z-index: 100;
+    /* The width is not set here as it dependent on contents */
+}
+
+.content-square-title {
+    position: relative;
+    transform: rotate(315deg);
+    transform-origin: top left;
+    font-size: 10px;
+    text-align: left;
+    top: calc(var(--square-size) - var(--square-border-radius));
+    left: 0;
+    z-index: -1;
+    width: 200%;
+    opacity: .8;
+    transition: left 0.4s ease, transform 0.9s ease;
+    background-color: var(--background-color);
+    box-shadow: var(--content-square-box-shadow-small);
+}
+
+.content-square:hover .content-square-title {
+    left: -28px;
+    transform: rotate(270deg);
+}
+
+.content-square:hover {
+    cursor: none;
+    box-shadow: var(--content-square-box-shadow);
+}
+
+.content-square {
+    width: var(--square-size);
+    height: var(--square-size);
+    margin: var(--square-margin);
+    /* background-position: center; */
+    background-size: 100% 100%;
+    transition: background-image 0.5s;
+    border-radius: var(--square-border-radius);
+    box-shadow: var(--content-square-box-shadow);
+    border: 4px solid var(--dark-grey-color);
+}
+
+.square-selection-effect {
+    outline: 3.4px dashed var(--lightest-grey-color);
+    outline-offset: 3px;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.moving-box {
+    position: absolute;
+    width: var(--movable-square-size);
+    height: var(--movable-square-size);
+    /* background: rgba(26, 26, 19, 0.3); */
+}
+
+#sprite {
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: translateX(0.3%);
+}
+
+#sprite::after {
+    content: '';
+    position: absolute;
+    top: 76%;
+    left: 151%;
+    width: 240%;
+    height: 45%;
+    background-image: url('assets/shadow.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    transform: translateX(-50%);
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.37;
+}
+
+#speech-bubble {
+    position: absolute;
+    opacity: 0;
+    margin-right: var(--content-box-margin);
+    z-index: 1000;
+}
+
+#speech-content {
+    max-height: 300px;
+    overflow-y: auto;
+    color: white;
+    font-size: 13px;
+    background-color: var(--speech-bubble-color);
+    border-radius: 1rem;
+    box-shadow: 7px 5px 5px 0px rgba(0, 0, 0, 0.16);
+    padding-left: var(--speech-side-padding);
+    padding-right: var(--speech-side-padding);
+    padding-top: 8px;
+    padding-bottom: 12px;
+    max-width: calc(var(--square-size) * 2 + var(--square-margin) * 2 + var(--movable-square-size) - var(--speech-side-padding) * 2);
+    border-top: 13px solid var(--blue-highlight-color);
+    overflow-y: auto;
+    text-wrap: pretty;
+}
+
+/* The speech bubble arrow */
+#speech-content::after {
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: -18px;
+    border-left: 28px solid transparent;
+    /* border-right: 3px solid transparent; */
+    border-bottom: 19px solid;
+    border-bottom-color: var(--speech-bubble-color);
+    box-shadow: 3px 5px 5px 0px rgba(0, 0, 0, 0.16);
+    z-index: -1;
+}
+
+
+#close-speech {
+    position: absolute;
+    top: 6px;
+    right: -4px;
+    width: 20px;
+    height: 18px;
+    border-radius: 30%;
+    color: white;
+    background-color: var(--red-highlight-color);
+    border: 0px;
+    text-align: center;
+    line-height: 20px;
+    box-shadow: 3px 5px 5px 0px rgba(0, 0, 0, 0.16);
+    font: 11px sans-serif;
+    font-weight: bold;
+    cursor: pointer; /* Changes the cursor on hover */
+}
+
+/* unvisited link */
+a:link {
+    color: rgba(189, 213, 255,  0.62);
+  }
+  
+/* visited link */
+a:visited {
+color: rgba(244, 210, 255, 0.7);
+}
+
+/* mouse over link */
+a:hover {
+    font-weight: bold;
+}

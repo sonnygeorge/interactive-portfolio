@@ -1,0 +1,1 @@
+Great. Note that when we will add these to our actual content box they will need to be forced to be squares restricted to the hard-coded size. I believe that there should be css properties that will enable fitting or clipping things right? Maybe even making them there own scrollable window? Let's not get too distracted by this detail right now.
