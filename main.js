@@ -5,10 +5,8 @@ const CONTENT_SQUARES = [
     'Papiamentu ASR System',
     'Rick & Morty Speaker Attribution',
     "Communication Honorable Mentions",
-    // Interactive Portfolio
-    // Papiamentu ASR Project - Corpus repo w/ 1. paper pdf of fine-tuning results & 2. Colab notebook of fine-tuning code
+    "Interactive Portfolio Site",
     // Published Music - "My Music Hobby"?
-    // Communicating Ideas Hall of Fame?
 ];
 
 const ORIGINAL_BACKGROUNDS = {
@@ -16,6 +14,7 @@ const ORIGINAL_BACKGROUNDS = {
     'Rick & Morty Speaker Attribution': 'url(assets/rick_and_morty.png)',
     'Papiamentu ASR System': 'url(assets/papiamentu.png)',
     'Communication Honorable Mentions': 'url(assets/spelunk.png)',
+    'Interactive Portfolio Site': 'url(assets/portfolio.png)',
 };
 
 const HOVER_BACKGROUNDS = {
@@ -344,15 +343,24 @@ function populateSkillsList(skills) {
 }
 
 function highlightProjects(projects) {
+    var hasSquare = false;
     projects.forEach(project => {
         const projectElement = document.querySelector(`[data-project="${project}"]`);
         if (projectElement) {
             projectElement.classList.add('blinking-glow-effect');
+            hasSquare = true;
         }
     });
+    if (!hasSquare) {
+        document.getElementById('coming-soon').style.opacity = 1;
+    }
+    else {
+        document.getElementById('coming-soon').style.opacity = 0;
+    }
 }
 
 function unhighlightProjects(projects) {
+    var hasSquare = false;
     projects.forEach(project => {
         const projectElement = document.querySelector(`[data-project="${project}"]`);
         if (projectElement) {
@@ -360,6 +368,12 @@ function unhighlightProjects(projects) {
             projectElement.classList.remove('blinking-glow-effect');
         }
     });
+    if (!hasSquare) {
+        document.getElementById('coming-soon').style.opacity = 0;
+    }
+    else {
+        document.getElementById('coming-soon').style.opacity = 1;
+    }
 }
 
 let explanations = {};
