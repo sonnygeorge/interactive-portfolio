@@ -72,15 +72,22 @@ body::after {
     bottom: 0; /* Align to the bottom edge of the viewport */
     transform: translate(-100%, 0);
     z-index: 3;
-    padding: 10px;
     text-align: right;
     font-size: 10px;
     margin: 3px;
+    padding: 10px;
     padding-right: 13px;
     width: 150px;
-    background-color: var(--background-color);
-    box-shadow: var(--content-square-box-shadow-small);
     opacity: 0;
+}
+
+#coming-soon-text {
+    text-align: right;
+    font-size: 10px;
+    background-color: var(--glow-blink-color);
+    box-shadow: 0 0 0px 3px var(--glow-blink-color);
+    width: 140px;
+    border-radius: .4rem;
 }
 
 #skills-list li {
