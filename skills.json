@@ -1,18 +1,18 @@
 {
-    "NLP": ["Rick & Morty Speaker Attribution"],
-    "Python": ["Routine Butler", "Rick & Morty Speaker Attribution"],
+    "NLP": ["Rick & Morty Speaker Attribution", "Communication Honorable Mentions", "Papiamentu ASR System"],
+    "Python": ["Routine Butler", "Rick & Morty Speaker Attribution", "Papiamentu ASR System"],
     "DevOps": [],
     "HTML/CSS": [],
     "Javascript": [],
     "Computer Vision": [],
-    "Design Patterns": ["Rick & Morty Speaker Attribution"],
+    "Design Patterns": ["Rick & Morty Speaker Attribution", "Routine Butler"],
     "Embedded Devices": ["Routine Butler"],
-    "Machine Learning": ["Rick & Morty Speaker Attribution"],
+    "Machine Learning": ["Rick & Morty Speaker Attribution", "Papiamentu ASR System"],
     "Product Management": ["Routine Butler"],
     "Software Architecting": ["Routine Butler"],
-    "Teamwork & Leadership": [],
-    "Technical Communication": [],
-    "Creative Problem Solving": ["Routine Butler"],
-    "Seeing Things Through Fully": ["Routine Butler"],
-    "Automated Speech Recognition": []
+    "Teamwork & Leadership": ["Papiamentu ASR System"],
+    "Technical Communication": ["Communication Honorable Mentions"],
+    "Creative Problem Solving": ["Routine Butler", "Papiamentu ASR System", "Communication Honorable Mentions"],
+    "Seeing Things Through Fully": ["Routine Butler", "Papiamentu ASR System"],
+    "Automated Speech Recognition": ["Papiamentu ASR System"]
 }

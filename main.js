@@ -2,19 +2,26 @@ import Sprite from './sprite.js';
 
 const CONTENT_SQUARES = [
     'Routine Butler',
+    'Papiamentu ASR System',
     'Rick & Morty Speaker Attribution',
+    "Communication Honorable Mentions",
     // Interactive Portfolio
-    // Papiamentu ASR Project
+    // Papiamentu ASR Project - Corpus repo w/ 1. paper pdf of fine-tuning results & 2. Colab notebook of fine-tuning code
+    // Published Music - "My Music Hobby"?
+    // Communicating Ideas Hall of Fame?
 ];
 
 const ORIGINAL_BACKGROUNDS = {
     'Routine Butler': 'url(assets/routine_butler.png)',
     'Rick & Morty Speaker Attribution': 'url(assets/rick_and_morty.png)',
+    'Papiamentu ASR System': 'url(assets/papiamentu.png)',
+    'Communication Honorable Mentions': 'url(assets/spelunk.png)',
 };
 
 const HOVER_BACKGROUNDS = {
     'Routine Butler': 'url(assets/routine_butler.gif)',
     'Rick & Morty Speaker Attribution': 'url(assets/rick_and_morty.gif)',
+    'Communication Honorable Mentions': 'url(assets/communication.gif)',
 };
 
 // Global state variables
@@ -101,7 +108,7 @@ function showIntroductorySpeechBubble() {
     const speechBubble = document.getElementById('speech-bubble');
     const speechText = document.getElementById('speech-text');
 
-    speechText.innerHTML = "Heya!<br><br> I'm Sonny's mom, Lisa.<br><br>Isn't Sonny just the greatest? He's all that and a slice of bread!<br><br>Here are some of his recent projects.<br><br>You should <u>click</u> on a few tiles to learn more!";
+    speechText.innerHTML = "Heya! I'm Sonny's mom, Lisa. Isn't Sonny just the greatest? He's all that and a slice of bread!<br><br>Here are some of his recent projects. You should <u>click</u> on a few tiles to learn more!";
     speechBubble.classList.remove('hidden');
     setTimeout(() => speechBubble.style.opacity = 1, 0); // Apply opacity transition for the intro
 }

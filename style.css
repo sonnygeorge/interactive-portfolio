@@ -1,9 +1,9 @@
 :root {
-    --square-size: 178px;
+    --square-size: 160px;
     --square-margin: 18px;
-    --movable-square-size: 36px;
+    --movable-square-size: 32px;
     --content-box-margin: 50px;
-    --num-cols: 2;
+    --num-cols: 3;
     --square-total-size: calc(var(--square-size) + 2 * var(--square-margin));
     --content-box-padding: var(--movable-square-size);
     --ten-pixel-traversal-duration: 74ms;  /* AKA animation speed */
@@ -18,7 +18,7 @@
     --square-border-radius: 1rem;
     --blue-highlight-color: rgb(167, 223, 226);
     --red-highlight-color: rgb(199, 33, 0);
-    --glow-blink-color: rgba(255, 244, 35, 0.268);
+    --glow-blink-color: rgba(255, 35, 35, 0.268); /*rgba(255, 244, 35, 0.268);*/
     --dark-grey-color: rgba(77, 77, 77, 0.869);
     --grey-color: rgb(135, 132, 124);
     --light-grey-color: rgb(160, 157, 150);
@@ -199,10 +199,10 @@ body::after {
 }
 
 #speech-content {
-    max-height: 300px;
+    max-height: 270px;
     overflow-y: auto;
     color: white;
-    font-size: 13px;
+    font-size: 12px;
     background-color: var(--speech-bubble-color);
     border-radius: 1rem;
     box-shadow: 7px 5px 5px 0px rgba(0, 0, 0, 0.16);
@@ -210,9 +210,10 @@ body::after {
     padding-right: var(--speech-side-padding);
     padding-top: 8px;
     padding-bottom: 12px;
-    max-width: calc(var(--square-size) * 2 + var(--square-margin) * 2 + var(--movable-square-size) - var(--speech-side-padding) * 2);
+    max-width: calc(var(--square-size) * 2.5 + var(--square-margin) * 2 + var(--movable-square-size) - var(--speech-side-padding) * 2);
     border-top: 13px solid var(--blue-highlight-color);
     overflow-y: auto;
+    align-items: center;
     text-wrap: pretty;
 }
 
@@ -228,6 +229,7 @@ body::after {
     border-bottom-color: var(--speech-bubble-color);
     box-shadow: 3px 5px 5px 0px rgba(0, 0, 0, 0.16);
     z-index: -1;
+    justify-content: center;
 }
 
 
